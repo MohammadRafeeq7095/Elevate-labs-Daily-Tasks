@@ -8,10 +8,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: nodejs-demo-app   # 👈 set working dir
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -23,9 +19,10 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: nodejs-demo-app   # run npm install inside app folder
 
       - name: Build Docker image
-        run: docker build -t mohammadrafeeq7095/nodejs-demo-app:latest ./nodejs-demo-app
+        run: docker build -t mohammadrafeeq7095/nodejs-demo-app:latest .
 
       - name: Log in to DockerHub
         uses: docker/login-action@v2
