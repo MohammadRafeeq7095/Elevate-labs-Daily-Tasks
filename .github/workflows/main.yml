@@ -8,6 +8,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: nodejs-demo-app   # 👈 set working dir
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
